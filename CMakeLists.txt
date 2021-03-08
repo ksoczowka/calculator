@@ -42,7 +42,7 @@ set(${CXX_STANDARD_REQUIRED} ON)
 set(SRC_LIST
  src/plik.cpp
 )
-set(SFML_DIR "/usr/lib/cmake/SFML")
+set(SFML_DIR "/usr/lib/SFML")
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/font DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 include_directories(${CMAKE_SOURCE_DIR}/includes)
