@@ -42,7 +42,9 @@ set(${CXX_STANDARD_REQUIRED} ON)
 set(SRC_LIST
  src/plik.cpp
 )
-set(SFML_STATIC_LIBRARIES TRUE)
+set(SFML_DIR "/usr/local/lib/cmake/SFML")
+
+find_package(SFML 2.5 COMPONENTS graphics REQUIRED)
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/font DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 include_directories(${CMAKE_SOURCE_DIR}/includes)
@@ -51,8 +53,6 @@ add_executable(${PROJECT_NAME} src/main.cpp)
 add_executable(${PROJECT_NAME}-ut tests/test.cpp)
 target_link_libraries(${PROJECT_NAME}-ut gtest_main SRC)
 target_link_libraries(${PROJECT_NAME} SRC)
+target_link_libraries(${PROJECT_NAME} sfml-graphics sfml-window sfml-system)
 enable_testing()
 add_test(NAME Calculator_test COMMAND ${PROJECT_NAME}-ut)
-
-find_package(SFML 2.5 COMPONENTS graphics REQUIRED)
-target_link_libraries(${PROJECT_NAME} sfml-graphics sfml-window sfml-system) 
