@@ -11,6 +11,8 @@ jobs:
       uses: actions/checkout@master
     - name: Creating build/
       run: mkdir build/
+    - name: Installing dependencies
+      run: sudo apt-get install sfml
     - name: Compile
       working-directory: build/
       run: |
