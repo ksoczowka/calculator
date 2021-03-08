@@ -43,6 +43,7 @@ set(SRC_LIST
  src/plik.cpp
 )
 set(SFML_DIR "${CMAKE_SOURCE_DIR}/SFML")
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/")
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/font DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 include_directories(${CMAKE_SOURCE_DIR}/includes)
