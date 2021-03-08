@@ -12,14 +12,7 @@ jobs:
     - name: Creating build/
       run: mkdir build/
     - name: Installing dependencies
-      run: |
-        sudo apt-get install opengl
-        git clone https://github.com/SFML/SFML.git
-        cd SFML/
-        mkdir build/
-        cd build/
-        cmake ..
-        make
+      run: sudo apt-get install libsfml-dev
     - name: Compile
       working-directory: build/
       run: |
