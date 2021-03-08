@@ -42,15 +42,18 @@ set(${CXX_STANDARD_REQUIRED} ON)
 set(SRC_LIST
  src/plik.cpp
 )
+set(SFML_DIR "/usr/lib/cmake/SFML")
 
-include_directories(${CMAKE_SOURCE_DIR}/inc)
-add_library(SRC ${SRC_LIST})
+include_directories(${CMAKE_SOURCE_DIR}/includes)
+add_library(SRC STATIC ${SRC_LIST})
 add_executable(${PROJECT_NAME} src/main.cpp)
 add_executable(${PROJECT_NAME}-ut tests/test.cpp)
 target_link_libraries(${PROJECT_NAME}-ut gtest_main SRC)
 target_link_libraries(${PROJECT_NAME} SRC)
 enable_testing()
-add_test(NAME bomberman_test COMMAND ${PROJECT_NAME}-ut)
+add_test(NAME Calculator_test COMMAND ${PROJECT_NAME}-ut)
 
 find_package(SFML 2.5.1 COMPONENTS graphics window system REQUIRED)
 target_link_libraries(${PROJECT_NAME} sfml-graphics sfml-window sfml-system) 
+
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/font DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
