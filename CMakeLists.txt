@@ -55,5 +55,5 @@ target_link_libraries(${PROJECT_NAME} SRC)
 enable_testing()
 add_test(NAME Calculator_test COMMAND ${PROJECT_NAME}-ut)
 
-find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED)
+find_package(SFML 2.5 COMPONENTS graphics REQUIRED)
 target_link_libraries(${PROJECT_NAME} sfml-graphics sfml-window sfml-system) 
