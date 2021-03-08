@@ -44,6 +44,7 @@ set(SRC_LIST
 )
 set(SFML_DIR "/usr/lib/cmake/SFML")
 
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/font DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 include_directories(${CMAKE_SOURCE_DIR}/includes)
 add_library(SRC STATIC ${SRC_LIST})
 add_executable(${PROJECT_NAME} src/main.cpp)
@@ -53,7 +54,5 @@ target_link_libraries(${PROJECT_NAME} SRC)
 enable_testing()
 add_test(NAME Calculator_test COMMAND ${PROJECT_NAME}-ut)
 
-find_package(SFML 2.5.1 COMPONENTS graphics window system REQUIRED)
+find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED)
 target_link_libraries(${PROJECT_NAME} sfml-graphics sfml-window sfml-system) 
-
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/font DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
