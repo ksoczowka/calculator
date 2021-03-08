@@ -13,6 +13,7 @@ jobs:
       run: mkdir build/
     - name: Installing dependencies
       run: |
+        sudo apt-get install opengl
         git clone https://github.com/SFML/SFML.git
         cd SFML/
         mkdir build/
