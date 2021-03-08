@@ -16,7 +16,6 @@ jobs:
     - name: Compile
       working-directory: build/
       run: |
-        which libsfml-dev
         cmake ..
         make
     - name: Run Tests
