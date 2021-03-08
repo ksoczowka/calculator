@@ -12,7 +12,7 @@ jobs:
     - name: Creating build/
       run: mkdir build/
     - name: Installing dependencies
-      run: sudo apt-get install sfml
+      run: sudo apt-get install libsfml-dev
     - name: Compile
       working-directory: build/
       run: |
