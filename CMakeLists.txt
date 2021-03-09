@@ -42,7 +42,7 @@ set(${CXX_STANDARD_REQUIRED} ON)
 set(SRC_LIST
  src/plik.cpp
 )
-set(SFML_DIR "/usr/local/share/lib/cmake/SFML")
+set(SFML_DIR "/usr/local/bin/cmake/SFML")
 
 find_package(SFML 2.5 COMPONENTS graphics REQUIRED)
 
