@@ -11,6 +11,10 @@ int main()
     sf::RenderWindow window(sf::VideoMode(WindowW, WindowH), "Calculator", sf::Style::Titlebar | sf::Style::Close);
     centerOfWindow(window);
 
+    sf::RectangleShape line1(sf::Vector2f(WindowW - 10, 2));
+    line1.setFillColor(sf::Color::White);
+    line1.setPosition(sf::Vector2f(5, 120));
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -22,6 +26,7 @@ int main()
         }
 
         window.clear();
+        window.draw(line1);
         window.display();
     }
 
