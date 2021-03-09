@@ -42,9 +42,8 @@ set(${CXX_STANDARD_REQUIRED} ON)
 set(SRC_LIST
  src/plik.cpp
 )
-set(SFML_DIR "/usr/local/bin/cmake/SFML")
 
-find_package(SFML 2.5 COMPONENTS graphics REQUIRED)
+find_package(SFML 2.5 COMPONENTS graphics)
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/font DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 include_directories(${CMAKE_SOURCE_DIR}/includes)
