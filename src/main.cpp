@@ -1,24 +1,35 @@
 #include <SFML/Graphics.hpp>
 
+void centerOfWindow(sf::RenderWindow&);
+
+const constexpr int WindowH = 600;
+const constexpr int WindowW = 900;
+
+
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+    sf::RenderWindow window(sf::VideoMode(WindowW, WindowH), "Calculator", sf::Style::Titlebar | sf::Style::Close);
+    centerOfWindow(window);
 
     while (window.isOpen())
     {
         sf::Event event;
         while (window.pollEvent(event))
         {
-            if (event.type == sf::Event::Closed)
+            if (event.type == sf::Event::Closed){
                 window.close();
+            }
         }
 
         window.clear();
-        window.draw(shape);
         window.display();
     }
 
     return 0;
+}
+
+void centerOfWindow(sf::RenderWindow& window){
+    auto desktop = sf::VideoMode::getDesktopMode();
+    sf::Vector2i mb = {int(desktop.width/2 - window.getSize().x/2),int(desktop.height/2 - window.getSize().y/2)};
+    window.setPosition(mb);
 }
