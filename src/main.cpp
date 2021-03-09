@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <vector>
 
 void centerOfWindow(sf::RenderWindow&);
 
@@ -13,7 +14,7 @@ int main()
 
     sf::RectangleShape line1(sf::Vector2f(WindowW - 10, 2));
     line1.setFillColor(sf::Color::White);
-    line1.setPosition(sf::Vector2f(5, 120));
+    line1.setPosition(sf::Vector2f(5, WindowH/5));
 
     while (window.isOpen())
     {
