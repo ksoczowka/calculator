@@ -8,9 +8,10 @@ public:
     Button(sf::Vector2f, std::string);
 
     sf::RectangleShape getShape();
-    sf::Text getText();
+    sf::Text getTextt();
+
 private:
     std::string value_;
     sf::RectangleShape shape_;
-    sf::Text text_;
+    sf::Text text_ {};
 };

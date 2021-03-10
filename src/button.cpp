@@ -12,13 +12,13 @@ Button::Button(sf::Vector2f pos, std::string value) {
     font.loadFromFile("font/font.ttf");
     text_.setCharacterSize(20);
     text_.setFont(font);
-    text_.setColor(sf::Color(180, 180, 180));
+    text_.setFillColor(sf::Color(180, 180, 180));
     text_.setString(value_);
     text_.setPosition(pos);
 }
 sf::RectangleShape Button::getShape() {
     return shape_;
 }
-sf::Text Button::getText() {
+sf::Text Button::getTextt() {
     return text_;
 }
