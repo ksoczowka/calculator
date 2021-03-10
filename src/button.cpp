@@ -8,17 +8,21 @@ Button::Button(sf::Vector2f pos, std::string value) {
 
     value_ = value;
 
-    sf::Font font;
-    font.loadFromFile("font/font.ttf");
+    font_.loadFromFile("font/font.ttf");
     text_.setCharacterSize(20);
-    text_.setFont(font);
-    text_.setColor(sf::Color(180, 180, 180));
+    text_.setFont(font_);
+    text_.setFillColor(sf::Color::White);
     text_.setString(value_);
-    text_.setPosition(pos);
+    text_.setPosition(pos.x + shape_.getGlobalBounds().width/2. - text_.getGlobalBounds().width,
+                      pos.y + shape_.getGlobalBounds().height/2. - text_.getGlobalBounds().height);
 }
 sf::RectangleShape Button::getShape() {
     return shape_;
 }
 sf::Text Button::getText() {
     return text_;
+}
+void Button::render(sf::RenderTarget* target) {
+    target->draw(shape_);
+    target->draw(text_);
 }

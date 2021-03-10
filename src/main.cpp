@@ -25,8 +25,7 @@ int main()
 
         window.clear(backCol);
         window.draw(line1);
-        window.draw(button.getShape());
-        window.draw(button.getText());
+        button.render(&window);
         window.display();
     }
 
