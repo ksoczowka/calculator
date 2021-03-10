@@ -13,6 +13,8 @@ sf::Color textColor = sf::Color(180, 180, 180);
 
 sf::RectangleShape line1(sf::Vector2f(WindowW - 10, 2));
 
+sf::Mouse cursor;
+
 
 void centerOfWindow(sf::RenderWindow&);
 

@@ -26,3 +26,23 @@ void Button::render(sf::RenderTarget* target) {
     target->draw(shape_);
     target->draw(text_);
 }
+void Button::update(sf::Mouse cursor, sf::Window* window) {
+    status_ = buttonStatus::IDLE;
+    if(shape_.getGlobalBounds().contains(sf::Vector2f(cursor.getPosition(*window)))) {
+        status_ = buttonStatus::HOVER;
+        if(cursor.isButtonPressed(sf::Mouse::Button::Left)) {
+            status_ = buttonStatus::ACTIVE;
+        }
+    }
+    switch(status_) {
+        case buttonStatus::IDLE:
+            shape_.setFillColor(sf::Color::Green);
+            break;
+        case buttonStatus::HOVER:
+            shape_.setFillColor(sf::Color::Yellow);
+            break;
+        case buttonStatus::ACTIVE:
+            shape_.setFillColor(sf::Color::Red);
+            break;
+    }
+}
