@@ -6,7 +6,7 @@
 enum class buttonStatus {
     IDLE,
     HOVER,
-    ACTIVE
+    ACTIVE,
 };
 
 class Button {
@@ -16,8 +16,9 @@ public:
     sf::RectangleShape getShape();
     sf::Text getText();
     void render(sf::RenderTarget*);
-    void update(sf::Mouse, sf::Window*);
+    std::string update(sf::Mouse, sf::Window*);
 private:
+    bool clicked_ = false;
     buttonStatus status_;
     sf::Font font_;
     std::string value_;
