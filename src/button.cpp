@@ -16,7 +16,6 @@ Button::Button(sf::Vector2f pos, std::string value) {
     text_.setPosition(pos.x + shape_.getGlobalBounds().width/2. - text_.getGlobalBounds().width,
                       pos.y + shape_.getGlobalBounds().height/2. - text_.getGlobalBounds().height);
 }
-
 void Button::render(sf::RenderTarget* target) {
     target->draw(shape_);
     target->draw(text_);

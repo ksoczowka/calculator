@@ -9,10 +9,11 @@ int main()
     
     centerOfWindow(window);
 
-    createButtons();
+    createButtons(buttons);
     
     line1.setFillColor(uiCol);
     line1.setPosition(sf::Vector2f(5, WindowH/5));
+
 
     while (window.isOpen())
     {
@@ -28,7 +29,7 @@ int main()
             //     buff = it.update(cursor, &window);
             //     if(buff == "Can"){
             //         operation = "";
-            //     }else if(buff != ""){
+            //     } else if(buff != ""){
             //         operation += buff;
             //     }
 
@@ -39,10 +40,9 @@ int main()
         window.clear(backCol);
         window.draw(line1);
         
-        // for(auto& it: buttons){
-        //     it.render(&window);
-        // }
-
+        for(auto& it: buttons){
+            it.render(&window);
+        }
         window.display();
     }
 
@@ -55,8 +55,7 @@ void centerOfWindow(sf::RenderWindow& window){
     window.setPosition(mb);
 }
 
-void createButtons(){
-    buttons.push_back(Button(sf::Vector2f(40, 40), "1"));
-    buttons.push_back(Button(sf::Vector2f(100, 40), "Can"));
-    buttons.shrink_to_fit();
+void createButtons(Button buttons[]){
+    buttons[0] = Button(sf::Vector2f(40, 40), "1");
+    buttons[1] = Button(sf::Vector2f(100, 40), "Can");
 }

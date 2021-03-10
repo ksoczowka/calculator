@@ -2,7 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <string>
-#include <vector>
+#include <array>
 
 #include "button.hpp"
 
@@ -21,8 +21,8 @@ sf::Mouse cursor;
 
 std::string operation {};
 
-std::vector<Button> buttons;
+Button buttons[2];
 
 void centerOfWindow(sf::RenderWindow&);
-void createButtons();
+void createButtons(Button buttons[]);
 

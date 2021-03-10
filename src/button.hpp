@@ -11,6 +11,7 @@ enum class buttonStatus {
 
 class Button {
 public:
+    Button(){};
     Button(sf::Vector2f, std::string);
 
     void render(sf::RenderTarget*);
