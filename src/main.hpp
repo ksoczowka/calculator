@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 
+#include "button.hpp"
+
 const constexpr int WindowH = 600;
 const constexpr int WindowW = 900;
 
@@ -17,7 +19,10 @@ sf::RectangleShape line1(sf::Vector2f(WindowW - 10, 2));
 
 sf::Mouse cursor;
 
-std::string operation;
+std::string operation {};
+
+std::vector<Button> buttons;
 
 void centerOfWindow(sf::RenderWindow&);
+void createButtons();
 
