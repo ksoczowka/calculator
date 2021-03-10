@@ -1,19 +1,16 @@
-#include <SFML/Graphics.hpp>
-#include <vector>
-
-void centerOfWindow(sf::RenderWindow&);
-
-const constexpr int WindowH = 600;
-const constexpr int WindowW = 900;
-
+#include "main.hpp"
+#include "button.hpp"
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(WindowW, WindowH), "Calculator", sf::Style::Titlebar | sf::Style::Close);
+    
     centerOfWindow(window);
 
-    sf::RectangleShape line1(sf::Vector2f(WindowW - 10, 2));
-    line1.setFillColor(sf::Color::White);
+
+    Button button = Button(sf::Vector2f(40, 40), "1");
+
+    line1.setFillColor(uiCol);
     line1.setPosition(sf::Vector2f(5, WindowH/5));
 
     while (window.isOpen())
@@ -26,8 +23,10 @@ int main()
             }
         }
 
-        window.clear();
+        window.clear(backCol);
         window.draw(line1);
+        window.draw(button.getShape());
+        window.draw(button.getText());
         window.display();
     }
 
