@@ -1,6 +1,8 @@
 #include "main.hpp"
 #include "button.hpp"
 
+#include <iostream>
+
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(WindowW, WindowH), "Calculator", sf::Style::Titlebar | sf::Style::Close);
@@ -9,6 +11,7 @@ int main()
 
 
     Button button = Button(sf::Vector2f(40, 40), "1");
+    Button buttonCan = Button(sf::Vector2f(100, 40), "Can");
 
     line1.setFillColor(uiCol);
     line1.setPosition(sf::Vector2f(5, WindowH/5));
@@ -21,12 +24,21 @@ int main()
             if (event.type == sf::Event::Closed){
                 window.close();
             }
+            operation += button.update(cursor, &window);
+            for()
+
+            std::cerr << operation << '\n';
         }
 
         window.clear(backCol);
         window.draw(line1);
+<<<<<<< HEAD
         window.draw(button.getShape());
         window.draw(button.getTextt());
+=======
+        button.render(&window);
+        buttonCan.render(&window);
+>>>>>>> d88aaf9653503c093985389d5740353c0aa69914
         window.display();
     }
 
