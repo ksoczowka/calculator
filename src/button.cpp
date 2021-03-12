@@ -1,6 +1,8 @@
 #include "button.hpp"
 
+
 Button::Button(sf::Vector2f pos, std::string value) {
+    clicked_ = false;
     shape_ = sf::RectangleShape(sf::Vector2f(40, 40));
     shape_.setFillColor(sf::Color::Magenta);
     shape_.setPosition(pos);
@@ -47,7 +49,7 @@ std::string Button::update(sf::Mouse cursor, sf::Window* window) {
     }
     return "";
 }
-Button Button::operator=(Button& other) {
+Button Button::operator=(Button other) {
     shape_ = other.shape_;
     font_ = other.font_;
     clicked_ = other.clicked_;
