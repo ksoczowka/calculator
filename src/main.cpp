@@ -59,10 +59,19 @@ void centerOfWindow(sf::RenderWindow& window){
 }
 std::array<Button, buttonCount> createButtons(){
     std::array<Button, buttonCount> buttons;
-    buttons[0] = Button(sf::Vector2f(40, 200), "0");
+    buttons[0] = Button(sf::Vector2f(500, 500), "0");
     buttons[1] = Button(sf::Vector2f(100, 200), "1");
-    buttons[2] = Button(sf::Vector2f(160, 200), "Can");
-    buttons[3] = Button(sf::Vector2f(220, 200), "Del");
+    buttons[2] = Button(sf::Vector2f(100, 200), "2");
+    buttons[3] = Button(sf::Vector2f(100, 200), "3");
+    buttons[4] = Button(sf::Vector2f(100, 200), "4");
+    buttons[5] = Button(sf::Vector2f(100, 200), "5");
+    buttons[6] = Button(sf::Vector2f(100, 200), "6");
+    buttons[7] = Button(sf::Vector2f(100, 200), "7");
+    buttons[8] = Button(sf::Vector2f(100, 200), "8");
+    buttons[9] = Button(sf::Vector2f(100, 200), "9");
+
+    buttons[10] = Button(sf::Vector2f(160, 200), "Can");
+    buttons[11] = Button(sf::Vector2f(220, 200), "Del");
     return buttons;
 }
 void renderWindow(sf::RenderTarget* window) {

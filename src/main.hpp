@@ -9,7 +9,7 @@
 const constexpr int WindowH = 600;
 const constexpr int WindowW = 900;
 
-const size_t buttonCount = 4;
+const size_t buttonCount = 12;
 
 sf::Color backCol = sf::Color(48, 48, 48);
 sf::Color uiCol = sf::Color(200, 200, 200);
