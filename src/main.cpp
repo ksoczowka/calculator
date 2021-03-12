@@ -128,7 +128,7 @@ void resultFunc(std::string& first, std::string& op, std::string& secound) {
     else if(op == "*"){
         operation = std::to_string(std::stoi(first) * std::stoi(secound));
     }
-    else if(op == "*"){
+    else if(op == "/"){
         operation = std::to_string((std::stof(first) / std::stof(secound)));
     }
     else{}
