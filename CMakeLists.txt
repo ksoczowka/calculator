@@ -40,7 +40,7 @@ set(${CXX_STANDARD_REQUIRED} ON)
 # Now simply link against gtest or gtest_main as needed. Eg
 
 set(SRC_LIST
- src/plik.cpp
+ src/button.cpp
 )
 
 find_package(SFML 2.5 COMPONENTS graphics REQUIRED)

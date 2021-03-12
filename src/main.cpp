@@ -1,19 +1,16 @@
-#include <SFML/Graphics.hpp>
+#include "main.hpp"
 
-void centerOfWindow(sf::RenderWindow&);
 
-const constexpr int WindowH = 600;
-const constexpr int WindowW = 900;
-
+#include <iostream>
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(WindowW, WindowH), "Calculator", sf::Style::Titlebar | sf::Style::Close);
+    
     centerOfWindow(window);
 
-    sf::RectangleShape line1(sf::Vector2f(WindowW - 10, 2));
-    line1.setFillColor(sf::Color::White);
-    line1.setPosition(sf::Vector2f(5, 120));
+    line1.setFillColor(uiCol);
+    line1.setPosition(sf::Vector2f(5, WindowH/5));
 
     while (window.isOpen())
     {
@@ -23,18 +20,51 @@ int main()
             if (event.type == sf::Event::Closed){
                 window.close();
             }
-        }
+            
+            for(auto& it: buttons){
+                std::string buff {};
+                buff = it.update(cursor, &window);
+                if(buff == "Can"){
+                    operation = "";
+                } else if(buff == "Del"){
+                    operation.pop_back();
+                } else if(buff == "0" && operation == "0"){
+                    operation += "";
+                } else if(buff != ""){
+                    if(operation == "0"){
+                        operation = "";
+                    }
+                    operation += buff;
+                }
 
-        window.clear();
-        window.draw(line1);
+            }
+            std::cerr << operation << '\n';
+        }
+        renderWindow(&window);
         window.display();
+        
     }
 
     return 0;
 }
-
 void centerOfWindow(sf::RenderWindow& window){
     auto desktop = sf::VideoMode::getDesktopMode();
     sf::Vector2i mb = {int(desktop.width/2 - window.getSize().x/2),int(desktop.height/2 - window.getSize().y/2)};
     window.setPosition(mb);
+}
+std::array<Button, buttonCount> createButtons(){
+    std::array<Button, buttonCount> buttons;
+    buttons[0] = Button(sf::Vector2f(40, 200), "0");
+    buttons[1] = Button(sf::Vector2f(100, 200), "1");
+    buttons[2] = Button(sf::Vector2f(160, 200), "Can");
+    buttons[3] = Button(sf::Vector2f(220, 200), "Del");
+    return buttons;
+}
+void renderWindow(sf::RenderTarget* window) {
+    window->clear(backCol);
+    window->draw(line1);
+    
+    for(auto& it: buttons){
+        it.render(window);
+    }
 }
