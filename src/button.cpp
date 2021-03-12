@@ -47,7 +47,7 @@ std::string Button::update(sf::Mouse cursor, sf::Window* window) {
     }
     return "";
 }
-Button Button::operator=(Button other) {
+Button Button::operator=(Button& other) {
     shape_ = other.shape_;
     font_ = other.font_;
     clicked_ = other.clicked_;
