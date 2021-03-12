@@ -36,6 +36,7 @@ int main()
                     first = "";
                     operatoR = "";
                     hasOperator = false;
+                    isFloat = false;
                 } 
                 else if(buff == "Del" && operation != ""){
                     operation.pop_back();
@@ -50,12 +51,19 @@ int main()
                     operation = "";
                     buff = "";
                     hasOperator = true;
+                    isFloat = false;
                 }
                 else if(buff == "="){
-                    resultFunc(first, operatoR, operation);
+                    operation = resultFunc(first, operatoR, operation);
                     first = "";
                     operatoR = "";
                     hasOperator = false;
+                }
+                else if(buff == "."){
+                    if(!isFloat){
+                        operation += buff;
+                        isFloat = true;
+                    }
                 }
                 else if(buff == "0" && operation == "0"){
                     //do nothing
@@ -106,8 +114,10 @@ std::array<Button, buttonCount> createButtons(){
 
     buttons[16] = Button(sf::Vector2f(655, 325), "(");
     buttons[17] = Button(sf::Vector2f(710, 325), ")");
+    
+    buttons[18] = Button(sf::Vector2f(600, 325), ".");
 
-    buttons[18] = Button(sf::Vector2f(765, 545), "=");
+    buttons[19] = Button(sf::Vector2f(765, 545), "=");
     return buttons;
 }
 void renderWindow(sf::RenderTarget* window) {
@@ -118,20 +128,32 @@ void renderWindow(sf::RenderTarget* window) {
         it.render(window);
     }
 }
-void resultFunc(std::string& first, std::string& op, std::string& secound) {
+std::string resultFunc(std::string& first, std::string& op, std::string& second) {
+    std::string result{};
     if(op == "+"){
-        operation = std::to_string(std::stoi(first) + std::stoi(secound));
+        result = std::to_string(std::stof(first) + std::stof(second));
     }
     else if(op == "-"){
-        operation = std::to_string(std::stoi(first) - std::stoi(secound));
+        result = std::to_string(std::stof(first) - std::stof(second));
     }
     else if(op == "*"){
-        operation = std::to_string(std::stoi(first) * std::stoi(secound));
+        result = std::to_string(std::stof(first) * std::stof(second));
     }
     else if(op == "/"){
-        operation = std::to_string((std::stof(first) / std::stof(secound)));
+        result = std::to_string((std::stof(first) / std::stof(second)));
     }
     else{}
-    
+    for(auto it = result.rbegin(); it <= result.rend(); it++){
+        if(*it == '0'){
+            result.pop_back();
+        } 
+        else if(*it == '.'){
+            result.pop_back();
+            break;
+        }
+        else{
+            break;
+        }
+    }
+    return result;
 }
-

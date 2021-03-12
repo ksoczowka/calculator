@@ -9,7 +9,7 @@
 const constexpr int WindowH = 600;
 const constexpr int WindowW = 900;
 
-const size_t buttonCount = 19;
+const size_t buttonCount = 20;
 
 sf::Color backCol = sf::Color(48, 48, 48);
 sf::Color uiCol = sf::Color(200, 200, 200);
@@ -33,6 +33,7 @@ auto isOperator = [](std::string str){
     return false;
 };
 bool hasOperator = false;
+bool isFloat = false;
 std::string operatoR;
 
 std::string operation = "0";
@@ -47,4 +48,4 @@ std::array<Button, buttonCount> createButtons();
 
 std::array<Button, buttonCount> buttons = createButtons();
 
-void resultFunc(std::string&, std::string&, std::string&);
+std::string resultFunc(std::string&, std::string&, std::string&);
