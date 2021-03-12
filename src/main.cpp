@@ -27,6 +27,8 @@ int main()
                 buff = it.update(cursor, &window);
                 if(buff == "Can"){
                     operation = "";
+                } else if(buff == "Del"){
+                    operation.pop_back();
                 } else if(buff != ""){
                     operation += buff;
                 }
@@ -53,9 +55,10 @@ void centerOfWindow(sf::RenderWindow& window){
     window.setPosition(mb);
 }
 
-std::array<Button, 2> createButtons(){
-    std::array<Button, 2> buttons;
+std::array<Button, buttonCount> createButtons(){
+    std::array<Button, buttonCount> buttons;
     buttons[0] = Button(sf::Vector2f(40, 40), "1");
     buttons[1] = Button(sf::Vector2f(100, 40), "Can");
+    buttons[2] = Button(sf::Vector2f(160, 40), "Del");
     return buttons;
 }
