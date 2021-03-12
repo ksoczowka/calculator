@@ -30,12 +30,12 @@ int main()
             for(auto& it: buttons){
 
                 std::string buff {};
-                std::string buffOp {};
                 buff = it.update(cursor, &window);
                 if(buff == "Can"){
                     operation = "0";
-                    buffOp = "";
+                    first = "";
                     operatoR = "";
+                    hasOperator = false;
                 } 
                 else if(buff == "Del" && operation != ""){
                     operation.pop_back();
@@ -44,11 +44,18 @@ int main()
                     }
                 } 
                 else if(isOperator(buff) && !hasOperator){
-                    buffOp = operation;
+                    first = "";
+                    first = operation;
                     operatoR = buff;
                     operation = "";
                     buff = "";
                     hasOperator = true;
+                }
+                else if(buff == "="){
+                    resultFunc(first, operatoR, operation);
+                    first = "";
+                    operatoR = "";
+                    hasOperator = false;
                 }
                 else if(buff == "0" && operation == "0"){
                     //do nothing
@@ -59,7 +66,8 @@ int main()
                     }
                     operation += buff;
                 }
-                output.setString(buffOp + operatoR + operation);
+                output.setString(first + operatoR + operation);
+                
 
             }
         }
@@ -110,10 +118,20 @@ void renderWindow(sf::RenderTarget* window) {
         it.render(window);
     }
 }
-void resultFunc() {
+void resultFunc(std::string& first, std::string& op, std::string& secound) {
+    if(op == "+"){
+        operation = std::to_string(std::stoi(first) + std::stoi(secound));
+    }
+    else if(op == "-"){
+        operation = std::to_string(std::stoi(first) - std::stoi(secound));
+    }
+    else if(op == "*"){
+        operation = std::to_string(std::stoi(first) * std::stoi(secound));
+    }
+    else if(op == "*"){
+        operation = std::to_string((std::stof(first) / std::stof(secound)));
+    }
+    else{}
+    
+}
 
-}
-template<typename T>
-T addition(T first, T second){
-    return first + second;
-}

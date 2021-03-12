@@ -36,6 +36,7 @@ bool hasOperator = false;
 std::string operatoR;
 
 std::string operation = "0";
+std::string first {};
 sf::Text output;
 sf::Font font;
 
@@ -46,4 +47,4 @@ std::array<Button, buttonCount> createButtons();
 
 std::array<Button, buttonCount> buttons = createButtons();
 
-void resultFunc(std::string&, sf::Text&);
+void resultFunc(std::string&, std::string&, std::string&);
