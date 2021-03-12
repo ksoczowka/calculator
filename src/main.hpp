@@ -15,12 +15,17 @@ sf::Color backCol = sf::Color(48, 48, 48);
 sf::Color uiCol = sf::Color(200, 200, 200);
 sf::Color specialUiColor = sf::Color(255, 69, 0);
 sf::Color textColor = sf::Color(180, 180, 180);
+sf::Color buttonColorIdle = sf::Color::Green;
+sf::Color buttonColorHover = sf::Color::Yellow;
+sf::Color buttonColorActive = sf::Color::Red;
 
 sf::RectangleShape line1(sf::Vector2f(WindowW - 10, 2));
 
 sf::Mouse cursor;
 
-std::string operation {};
+std::string operation = "0";
+sf::Text output;
+sf::Font font;
 
 void centerOfWindow(sf::RenderWindow&);
 void renderWindow(sf::RenderTarget*);

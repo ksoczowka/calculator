@@ -1,8 +1,5 @@
 #include "main.hpp"
 
-
-#include <iostream>
-
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(WindowW, WindowH), "Calculator", sf::Style::Titlebar | sf::Style::Close);
@@ -12,11 +9,16 @@ int main()
     line1.setFillColor(uiCol);
     line1.setPosition(sf::Vector2f(5, WindowH/5));
 
-    while (window.isOpen())
-    {
+    font.loadFromFile("font/font.ttf");
+    output.setFont(font);
+    output.setFillColor(sf::Color::Magenta);
+    output.setPosition(sf::Vector2f(10, 10));
+    output.setString("0");
+    output.setCharacterSize(50);
+
+    while (window.isOpen()){
         sf::Event event;
-        while (window.pollEvent(event))
-        {
+        while (window.pollEvent(event)){
             if (event.type == sf::Event::Closed){
                 window.close();
             }
@@ -25,9 +27,12 @@ int main()
                 std::string buff {};
                 buff = it.update(cursor, &window);
                 if(buff == "Can"){
-                    operation = "";
-                } else if(buff == "Del"){
+                    operation = "0";
+                } else if(buff == "Del" && operation != ""){
                     operation.pop_back();
+                    if(operation == "") {
+                        operation = "0";
+                    }
                 } else if(buff == "0" && operation == "0"){
                     operation += "";
                 } else if(buff != ""){
@@ -36,9 +41,9 @@ int main()
                     }
                     operation += buff;
                 }
+                output.setString(operation);
 
             }
-            std::cerr << operation << '\n';
         }
         renderWindow(&window);
         window.display();
@@ -63,7 +68,7 @@ std::array<Button, buttonCount> createButtons(){
 void renderWindow(sf::RenderTarget* window) {
     window->clear(backCol);
     window->draw(line1);
-    
+    window->draw(output);
     for(auto& it: buttons){
         it.render(window);
     }
