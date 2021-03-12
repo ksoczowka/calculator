@@ -9,7 +9,7 @@
 const constexpr int WindowH = 600;
 const constexpr int WindowW = 900;
 
-const size_t buttonCount = 12;
+const size_t buttonCount = 19;
 
 sf::Color backCol = sf::Color(48, 48, 48);
 sf::Color uiCol = sf::Color(200, 200, 200);
@@ -22,6 +22,8 @@ sf::Color buttonColorActive = sf::Color::Red;
 sf::RectangleShape line1(sf::Vector2f(WindowW - 10, 2));
 
 sf::Mouse cursor;
+
+std::array<char,4> operators = {'+','-','*','/'};
 
 std::string operation = "0";
 sf::Text output;

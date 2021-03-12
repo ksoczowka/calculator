@@ -24,23 +24,26 @@ int main()
             }
             
             for(auto& it: buttons){
+
                 std::string buff {};
                 buff = it.update(cursor, &window);
+
                 if(buff == "Can"){
                     operation = "0";
-                } else if(buff == "Del" && operation != ""){
+                } 
+                else if(buff == "Del" && operation != ""){
                     operation.pop_back();
                     if(operation == "") {
                         operation = "0";
                     }
-                } else if(buff == "0" && operation == "0"){
-                    operation += "";
-                } else if(buff != ""){
-                    if(operation == "0"){
-                        operation = "";
-                    }
+                } 
+                else if(buff == "0" && operation == "0"){
+                    //do nothing
+                }else if(buff != ""){
+                    
                     operation += buff;
                 }
+                
                 output.setString(operation);
 
             }
@@ -59,19 +62,29 @@ void centerOfWindow(sf::RenderWindow& window){
 }
 std::array<Button, buttonCount> createButtons(){
     std::array<Button, buttonCount> buttons;
-    buttons[0] = Button(sf::Vector2f(500, 500), "0");
-    buttons[1] = Button(sf::Vector2f(100, 200), "1");
-    buttons[2] = Button(sf::Vector2f(100, 200), "2");
-    buttons[3] = Button(sf::Vector2f(100, 200), "3");
-    buttons[4] = Button(sf::Vector2f(100, 200), "4");
-    buttons[5] = Button(sf::Vector2f(100, 200), "5");
-    buttons[6] = Button(sf::Vector2f(100, 200), "6");
-    buttons[7] = Button(sf::Vector2f(100, 200), "7");
-    buttons[8] = Button(sf::Vector2f(100, 200), "8");
-    buttons[9] = Button(sf::Vector2f(100, 200), "9");
+    buttons[0] = Button(sf::Vector2f(655, 545), "0");
+    buttons[1] = Button(sf::Vector2f(600, 490), "1");
+    buttons[2] = Button(sf::Vector2f(655, 490), "2");
+    buttons[3] = Button(sf::Vector2f(710, 490), "3");
+    buttons[4] = Button(sf::Vector2f(600, 435), "4");
+    buttons[5] = Button(sf::Vector2f(655, 435), "5");
+    buttons[6] = Button(sf::Vector2f(710, 435), "6");
+    buttons[7] = Button(sf::Vector2f(600, 380), "7");
+    buttons[8] = Button(sf::Vector2f(655, 380), "8");
+    buttons[9] = Button(sf::Vector2f(710, 380), "9");
 
-    buttons[10] = Button(sf::Vector2f(160, 200), "Can");
-    buttons[11] = Button(sf::Vector2f(220, 200), "Del");
+    buttons[10] = Button(sf::Vector2f(600, 545), "Can");
+    buttons[11] = Button(sf::Vector2f(710, 545), "Del");
+
+    buttons[12] = Button(sf::Vector2f(765, 325), "+");
+    buttons[13] = Button(sf::Vector2f(765, 380), "-");
+    buttons[14] = Button(sf::Vector2f(765, 435), "*");
+    buttons[15] = Button(sf::Vector2f(765, 490), "/");
+
+    buttons[16] = Button(sf::Vector2f(655, 325), "(");
+    buttons[17] = Button(sf::Vector2f(710, 325), ")");
+
+    buttons[18] = Button(sf::Vector2f(765, 545), "=");
     return buttons;
 }
 void renderWindow(sf::RenderTarget* window) {

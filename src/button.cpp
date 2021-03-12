@@ -3,7 +3,7 @@
 
 Button::Button(sf::Vector2f pos, std::string value) {
     clicked_ = false;
-    shape_ = sf::RectangleShape(sf::Vector2f(40, 40));
+    shape_ = sf::RectangleShape(sf::Vector2f(50, 50));
     shape_.setFillColor(sf::Color::Magenta);
     shape_.setPosition(pos);
 
