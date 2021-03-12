@@ -23,7 +23,17 @@ sf::RectangleShape line1(sf::Vector2f(WindowW - 10, 2));
 
 sf::Mouse cursor;
 
-std::array<char,4> operators = {'+','-','*','/'};
+std::array<std::string,4> operators = {"+","-","*","/"};
+auto isOperator = [](std::string str){ 
+    for(auto& el : operators){
+        if(str == el){
+            return true;
+        }
+    }
+    return false;
+};
+bool hasOperator = false;
+std::string operatoR;
 
 std::string operation = "0";
 sf::Text output;
@@ -35,3 +45,5 @@ void renderWindow(sf::RenderTarget*);
 std::array<Button, buttonCount> createButtons();
 
 std::array<Button, buttonCount> buttons = createButtons();
+
+void resultFunc(std::string&, sf::Text&);

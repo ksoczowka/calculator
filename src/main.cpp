@@ -1,4 +1,6 @@
 #include "main.hpp"
+#include <algorithm>
+#include <iostream>
 
 int main()
 {
@@ -16,6 +18,8 @@ int main()
     output.setString("0");
     output.setCharacterSize(50);
 
+    std::sort(operators.begin(), operators.end());
+
     while (window.isOpen()){
         sf::Event event;
         while (window.pollEvent(event)){
@@ -26,10 +30,12 @@ int main()
             for(auto& it: buttons){
 
                 std::string buff {};
+                std::string buffOp {};
                 buff = it.update(cursor, &window);
-
                 if(buff == "Can"){
                     operation = "0";
+                    buffOp = "";
+                    operatoR = "";
                 } 
                 else if(buff == "Del" && operation != ""){
                     operation.pop_back();
@@ -37,14 +43,23 @@ int main()
                         operation = "0";
                     }
                 } 
+                else if(isOperator(buff) && !hasOperator){
+                    buffOp = operation;
+                    operatoR = buff;
+                    operation = "";
+                    buff = "";
+                    hasOperator = true;
+                }
                 else if(buff == "0" && operation == "0"){
                     //do nothing
-                }else if(buff != ""){
-                    
+                }
+                else if(buff != "" && !isOperator(buff)){
+                    if(operation == "0"){
+                        operation = "";
+                    }
                     operation += buff;
                 }
-                
-                output.setString(operation);
+                output.setString(buffOp + operatoR + operation);
 
             }
         }
@@ -94,4 +109,11 @@ void renderWindow(sf::RenderTarget* window) {
     for(auto& it: buttons){
         it.render(window);
     }
+}
+void resultFunc() {
+
+}
+template<typename T>
+T addition(T first, T second){
+    return first + second;
 }
