@@ -21,8 +21,7 @@ sf::Mouse cursor;
 
 std::string operation {};
 
-Button buttons[2];
-
 void centerOfWindow(sf::RenderWindow&);
-void createButtons(Button buttons[]);
+std::array<Button, 2> createButtons();
 
+std::array<Button, 2> buttons = createButtons();
